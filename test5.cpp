@@ -25,7 +25,8 @@ int main(void)      //프로그램을 실행하는 main 함수
     clock_t start, end;     // 시간 측정을 위한 변수
     start = clock(); // 게임 시작 시간 기록
 
-    while (1) {     // 반복 시작
+    while (1)  // 반복
+    {     // while 시작
         printf("\n숫자 3개를 입력하세요 (공백으로 구분): \n");        // 플레이어 숫자 입력
         scanf("%d %d %d", &input[0], &input[1], &input[2]);     // 플레이어 입력 숫자 출력
 
@@ -34,7 +35,8 @@ int main(void)      //프로그램을 실행하는 main 함수
         ball_count = 0;
 
         // strike, ball 판정
-        for (int i = 0; i < 3; i++) {       // strike, ball 판정 시작
+        for (int i = 0; i < 3; i++)     // strike, ball 판정
+        {       // for 시작
             if (input[i] == ball[i]) // 같은자리 + 같은 숫자 = strike
             {   // if 시작
                 strike_count++;  
@@ -43,24 +45,24 @@ int main(void)      //프로그램을 실행하는 main 함수
             {   // else if 시작
                 ball_count++;   
             }   // else if 끝
-        }       // strike, ball 판정 끝 
+        }       // for 끝
 
         out_count = 3 - (strike_count + ball_count);        // strike와 ball을 제외한 나머지 out
         
         try_count++;    // 한번 시도 할 때마다 try
         // 다 맞췄을 경우
         if (strike_count == 3) // strike_count가 3일시
-            {        // if 함수 시작
+            {        // if 시작
             end = clock(); // 게임 종료 시간 기록            
             double elapsed_sec = (double)(end - start) / CLOCKS_PER_SEC;    // 걸린시간 계산
             printf("Home Run! %d번 만에 맞췄습니다!\n", try_count);     // 홈런 및 시도 횟수 출력
             printf("%f 초 시간이 걸렸습니다.\n", elapsed_sec);      // 걸린시간 출력
             break;      // 종료
-            }       // if 함수 끝
+            }       // if 끝
         else        // 틀렸을시 다시
             {       // else 시작
             printf("%d Strike, %d Ball, %d Out\n", strike_count, ball_count, out_count);    // 결과 출력
             }       // else 끝
-    }   // 반복 끝
+    }   // while 끝
     return 0;   // 프로그램 정상 종료
 }   // 메인함수의 끝
